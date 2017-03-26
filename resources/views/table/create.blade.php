@@ -20,52 +20,128 @@
                     </div>
                   @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="/game/create" >
+                    <form class="form-horizontal" role="form" method="POST" action="/table/create" >
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Place</label>
+
+                        <div class="form-group{{ $errors->has('game') ? ' has-error' : '' }}">
+                            <label for="game" class="col-md-4 control-label">Game</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                              <select id="game" name="game">
+                                @foreach($games as $game)
+                                <option value="{{$game->id}}">{{$game->name}}</option>
+                                @endforeach
+                              </select>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('game'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('game') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">Description</label>
+                        <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
+                            <label for="place" class="col-md-4 control-label">Place</label>
 
                             <div class="col-md-6">
-                              <textarea name="description" id="description" class="form-control" rows="5" style="resize:none;"></textarea>
+                                <input id="place" type="text" class="form-control" name="place" value="" required autofocus>
 
-                                @if ($errors->has('description'))
+                                @if ($errors->has('place'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
+                                        <strong>{{ $errors->first('place') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                            <label for="category" class="col-md-4 control-label">Category</label>
+
+                        <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                            <label for="date" class="col-md-4 control-label">Date</label>
 
                             <div class="col-md-6">
-                                <input id="category" type="text" class="form-control" name="category" value="">
+                              <input id="date" type="text" class="form-control" name="date" value="" required >
 
-                                @if ($errors->has('category'))
+                                @if ($errors->has('date'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('category') }}</strong>
+                                        <strong>{{ $errors->first('date') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('time') ? ' has-error' : '' }}">
+                            <label for="time" class="col-md-4 control-label">Time</label>
+
+                            <div class="col-md-6">
+                                <input id="time" type="text" class="form-control" name="time" value="" required>
+
+                                @if ($errors->has('time'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('time') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                        <label for="comment" class="col-md-4 control-label">Comment</label>
+
+                        <div class="col-md-6">
+                          <textarea name="comment" id="comment" class="form-control" rows="5" style="resize:none;"></textarea>
+
+                            @if ($errors->has('comment'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('comment') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                      </div>
+
+                    <div class="form-group{{ $errors->has('current_players') ? ' has-error' : '' }}">
+                        <label for="current_players" class="col-md-4 control-label">Current Players</label>
+
+                        <div class="col-md-6">
+                            <input id="current_players" type="text" class="form-control" name="current_players" value="" required>
+
+                            @if ($errors->has('current_players'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('current_players') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('all_players') ? ' has-error' : '' }}">
+                        <label for="all_players" class="col-md-4 control-label">All Players</label>
+
+                        <div class="col-md-6">
+                            <input id="all_players" type="text" class="form-control" name="all_players" value="" required>
+
+                            @if ($errors->has('all_players'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('all_players') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="form-group{{ $errors->has('private') ? ' has-error' : '' }}">
+                        <label for="private" class="col-md-4 control-label"></label>
+
+                        <div class="col-md-6">
+                          <input type="checkbox" name="private" > <label class="control-label">Private</label><br>
+
+                            @if ($errors->has('private'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('private') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

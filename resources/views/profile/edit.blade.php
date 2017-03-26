@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('about') ? ' has-error' : '' }}">
-                            <label for="about" class="col-md-4 control-label">About (Probably textarea)</label>
+                            <label for="about" class="col-md-4 control-label">About</label>
 
                             <div class="col-md-6">
                               <textarea name="about" id="about" class="form-control" rows="5" style="resize:none;">{{$profile->about}}</textarea>
