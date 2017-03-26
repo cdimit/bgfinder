@@ -10,13 +10,13 @@ use Auth;
 class TableController extends Controller
 {
   private $form_rules = [
-    // 'date' => 'date|require',
-    // 'time' => 'require',
-    // 'comment'  => '',
-    // 'place' => 'require',
-    // 'private'  => '',
-    // 'needed_players' => 'require',
-    // 'all_players' => 'require',
+    'date' => 'date|required',
+    'time' => 'required',
+    'comment'  => '',
+    'place' => 'required',
+    'private'  => '',
+    'current_players' => 'required',
+    'all_players' => 'required',
   ];
 
     /**
