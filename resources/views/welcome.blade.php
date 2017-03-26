@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    B0ard G@me Finder
                 </div>
 
                 <div class="links">

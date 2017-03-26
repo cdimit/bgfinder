@@ -20,4 +20,10 @@ class Game extends Model
    */
   protected $fillable = ['name', 'description', 'category'];
 
+
+  public function myRefers()
+  {
+    return $this->hasMany('App\Table');
+  }
+
 }

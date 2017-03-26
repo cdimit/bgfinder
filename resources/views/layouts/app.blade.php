@@ -8,14 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'B0ard G@me Finder') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
-        window.Laravel = {!! json_encode([
+        window.B0ard G@me Finder = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'B0ard G@me Finder') }}
                     </a>
                 </div>
 
@@ -59,6 +59,12 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                  <li>
+                                    <a href="/profile">My Profile</a>
+                                  </li>
+                                  <li>
+                                    <a href="/profile/edit">Edit Profile</a>
+                                  </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

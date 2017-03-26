@@ -26,4 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /**
+    * Return the relationship with ClientProfile model.
+    */
+    public function profile()
+    {
+      return $this->hasOne('App\Profile');
+    }
+
+
+    /**
+    * Clients & Business
+    * My Refers
+    */
+    public function tables()
+    {
+      return $this->hasMany('App\Table');
+    }
+
 }

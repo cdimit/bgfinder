@@ -18,13 +18,25 @@ class Table extends Model
    *
    * @var array
    */
-  protected $fillable = ['user_id', 'game_id', 'date',
-                          'time',
-                          'comment',
-                          'place',
-                          'private',
-                          'needed_players',
-                          'all_players'
-                        ];
+  protected $fillable = ['user_id', 'game_id', 'date', 'time', 'comment', 'place','private','current_players','all_players'];
+
+
+  /**
+  * Return the relationship with User model.
+  */
+  public function user()
+  {
+    return $this->belongsTo('App\User', 'user_id');
+  }
+
+  /**
+  * Return the relationship with User model.
+  */
+  public function game()
+  {
+    return $this->belongsTo('App\Game', 'game_id');
+  }
+
+
 
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Game;
+use App\Table;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $games = Game::all();
+      $tables = Table::all();
+        return view('home')->withGames($games)->withTables($tables);
     }
 }

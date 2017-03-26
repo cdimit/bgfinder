@@ -18,3 +18,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+//Authenticate users has access
+Route::group(['middleware' => 'auth'], function(){
+
+  Route::get('/profile', 'ProfileController@index');
+  Route::get('/profile/edit', 'ProfileController@edit');
+  Route::post('/profile/edit', 'ProfileController@update');
+
+  Route::get('/table/create', 'TableController@create');
+  Route::post('/table/create', 'TableController@store');
+
+});
+
+Route::get('/game/create', 'GameController@create');
+Route::post('/game/create', 'GameController@store');
+Route::get('/game/{game}/edit', 'GameController@edit');
+Route::post('/game/{game}/edit', 'GameController@update');
+
+Route::get('profile/{profile}', 'ProfileController@show');
