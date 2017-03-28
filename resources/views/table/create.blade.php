@@ -1,6 +1,15 @@
 @extends('layouts.app_new')
 
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( "#datepicker" ).datepicker();
+} );
+</script>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -59,10 +68,11 @@
 
 
                         <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+
                             <label for="date" class="col-md-4 control-label">Date</label>
 
                             <div class="col-md-6">
-                              <input id="date" type="text" class="form-control" name="date" value="" required >
+                              <input id="datepicker" type="text" class="form-control" name="date" value="" required >
 
                                 @if ($errors->has('date'))
                                     <span class="help-block">
