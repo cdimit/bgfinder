@@ -71,8 +71,14 @@ $( function() {
 
                             <label for="date" class="col-md-4 control-label">Date</label>
 
-                            <div class="col-md-6">
-                              <input id="datepicker" type="text" class="form-control" name="date" value="" required >
+
+
+                            <div class="col-md-3">
+                              <div class="input-group">
+                                <input id="datepicker" type="text" class="form-control" name="date" value="" required aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                              </div>
+
 
                                 @if ($errors->has('date'))
                                     <span class="help-block">

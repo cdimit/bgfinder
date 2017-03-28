@@ -39,6 +39,7 @@
     <link href="/css/style-responsive.css" rel="stylesheet" />
 	<link href="/css/xcharts.min.css" rel=" stylesheet">
 	<link href="/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -58,7 +59,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
+            <a href="/" class="logo">Board Game <span class="lite">Finder</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -277,9 +278,9 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
+                                <img alt="" src="img/{{Auth::user()->profile->picture}}" width="35px" height="35px">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">{{Auth::user()->username}}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -297,10 +298,17 @@
                                 <a href="#"><i class="icon_chat_alt"></i> Chats</a>
                             </li>
                             <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
+                              <a href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                                  <i class="icon_key_alt"></i> Log Out</a>
+                              </a>
+
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  {{ csrf_field() }}
+                              </form>
+
+                              </a>
                             </li>
                             <li>
                                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
@@ -457,6 +465,8 @@
 	<script src="/js/sparklines.js"></script>
 	<script src="/js/charts.js"></script>
 	<script src="/js/jquery.slimscroll.min.js"></script>
+
+
   <script>
 
       //knob
