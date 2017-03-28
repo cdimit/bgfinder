@@ -20,8 +20,7 @@ class CreateTablesTable extends Migration
             $table->text('comment')->nullable();
             $table->string('place');
             $table->boolean('private')->default(false);
-            $table->integer('current_players');
-            $table->integer('all_players');
+            $table->integer('needed_players');
 
             $table->integer('user_id')->unsigned();
             $table->integer('game_id')->unsigned();

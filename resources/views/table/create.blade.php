@@ -97,9 +97,12 @@ $( function() {
                         <div class="form-group{{ $errors->has('time') ? ' has-error' : '' }}">
                             <label for="time" class="col-md-4 control-label">Time</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <!-- <input id="timepicker" type="text" class="timepicker form-control" name="time" value="" required> -->
-                                <input type="text" id="timepicker" name="timepicker" class="timepicker form-control" required>
+                                <div class="input-group">
+                                  <input id="timepicker" name="time" class="timepicker form-control" required aria-describedby="basic-addon2">
+                                  <span class="input-group-addon" id="basic-addon2"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                </div>
 
                                        <script type="text/javascript">
                                            $('.timepicker').wickedpicker({ twentyFour: true, title:

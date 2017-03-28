@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+      @if(Auth::guest())
+        <div class="col-md-8 col-md-offset-1">
+      @else
         <div class="col-md-8 col-md-offset-2">
+      @endif
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 

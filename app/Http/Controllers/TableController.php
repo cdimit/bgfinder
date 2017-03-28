@@ -15,8 +15,7 @@ class TableController extends Controller
     'comment'  => '',
     'place' => 'required',
     'private'  => '',
-    'current_players' => 'required',
-    'all_players' => 'required',
+    'needed_players' => 'required',
   ];
 
     /**
@@ -71,8 +70,7 @@ class TableController extends Controller
         'comment'  => $request['comment'],
         'place' => $request['place'],
         'private'  => $private,
-        'current_players' => $request['current_players'],
-        'all_players' => $request['all_players'],
+        'needed_players' => $request['current_players'],
       ]);
 
       return redirect()->back()->withStatus("Game was successfully created!");

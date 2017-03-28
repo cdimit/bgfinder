@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
@@ -60,6 +60,16 @@
                             </div>
                         </div>
                     </form>
+                    <hr>
+                          <div class="col-md-4">
+                            <a href="/social" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
+                          </div>
+                          <div class="col-md-4">
+                            <a href="/social" class="btn btn-default btn-lg"><i class="fa fa-google"></i> Google+</a>
+                          </div>
+                          <div class="col-md-4">
+                            <a href="/social" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
+                          </div>
                 </div>
             </div>
         </div>

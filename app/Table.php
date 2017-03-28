@@ -18,7 +18,7 @@ class Table extends Model
    *
    * @var array
    */
-  protected $fillable = ['user_id', 'game_id', 'date', 'time', 'comment', 'place','private','current_players','all_players'];
+  protected $fillable = ['user_id', 'game_id', 'date', 'time', 'comment', 'place','private','needed_players'];
 
 
   /**

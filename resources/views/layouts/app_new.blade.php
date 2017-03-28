@@ -54,9 +54,11 @@
 
 
       <header class="header dark-bg">
+        @if(!Auth::guest())
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
             </div>
+        @endif
 
             <!--logo start-->
             <a href="/" class="logo">Board Game <span class="lite">Finder</span></a>
@@ -75,93 +77,12 @@
             </div>
 
             <div class="top-nav notification-row">
+              @if (Auth::guest())
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal-register"><i class="icon_key_alt"></i> Register</button>
+              @else
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
-
-                    <!-- task notificatoin start -->
-                    <li id="task_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="icon-task-l"></i>
-                            <span class="badge bg-important">6</span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-blue"></div>
-                            <li>
-                                <p class="blue">You have 6 pending letter</p>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Design PSD </div>
-                                        <div class="percent">90%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                            <span class="sr-only">90% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">
-                                            Project 1
-                                        </div>
-                                        <div class="percent">30%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                            <span class="sr-only">30% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Digital Marketing</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Logo Designing</div>
-                                        <div class="percent">78%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%">
-                                            <span class="sr-only">78% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Mobile App</div>
-                                        <div class="percent">50%</div>
-                                    </div>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar"  role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                            <span class="sr-only">50% Complete</span>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
                     <!-- task notificatoin end -->
                     <!-- inbox notificatoin start-->
                     <li id="mail_notificatoin_bar" class="dropdown">
@@ -318,16 +239,18 @@
                     <!-- user login dropdown end -->
                 </ul>
                 <!-- notificatoin dropdown end-->
+                @endif
             </div>
       </header>
       <!--header end-->
 
+      @if(!Auth::guest())
       <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">
-                
+
 				          <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="fa fa-star"></i>
@@ -359,8 +282,181 @@
           </div>
       </aside>
       <!--sidebar end-->
+      @endif
       <section id="main-content">
           <section class="wrapper">
+
+@if(Auth::guest())
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal-login" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+
+              <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+                  {{ csrf_field() }}
+
+                  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                      <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                      <div class="col-md-6">
+                          <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                          @if ($errors->has('email'))
+                              <span class="help-block">
+                                  <strong>{{ $errors->first('email') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                  <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                      <label for="password" class="col-md-4 control-label">Password</label>
+
+                      <div class="col-md-6">
+                          <input id="password" type="password" class="form-control" name="password" required>
+
+                          @if ($errors->has('password'))
+                              <span class="help-block">
+                                  <strong>{{ $errors->first('password') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <div class="col-md-6 col-md-offset-4">
+                          <div class="checkbox">
+                              <label>
+                                  <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <div class="col-md-8 col-md-offset-4">
+                          <button type="submit" class="btn btn-lg btn-success">
+                              Login
+                          </button>
+
+                          <a class="btn btn-link" href="{{ route('password.request') }}">
+                              Forgot Your Password?
+                          </a>
+                      </div>
+                  </div>
+              </form>
+                <div class="modal-footer">
+                      <div class="col-md-4">
+                        <a href="/social" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
+                      </div>
+                      <div class="col-md-4">
+                        <a href="/social" class="btn btn-default btn-lg"><i class="fa fa-google"></i> Google+</a>
+                      </div>
+                      <div class="col-md-4">
+                        <a href="/social" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
+                      </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal-register" class="modal fade">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+    <h4 class="modal-title">Login</h4>
+</div>
+<div class="modal-body">
+
+  <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+      {{ csrf_field() }}
+
+      <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+          <label for="name" class="col-md-4 control-label">Name</label>
+
+          <div class="col-md-6">
+              <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+              @if ($errors->has('name'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('name') }}</strong>
+                  </span>
+              @endif
+          </div>
+      </div>
+
+      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+          <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+          <div class="col-md-6">
+              <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+              @if ($errors->has('email'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('email') }}</strong>
+                  </span>
+              @endif
+          </div>
+      </div>
+
+      <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+          <label for="password" class="col-md-4 control-label">Password</label>
+
+          <div class="col-md-6">
+              <input id="password" type="password" class="form-control" name="password" required>
+
+              @if ($errors->has('password'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('password') }}</strong>
+                  </span>
+              @endif
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+
+          <div class="col-md-6">
+              <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <div class="col-md-6 col-md-offset-4">
+              <button type="submit" class="btn btn-success btn-lg">
+                  Register
+              </button>
+          </div>
+      </div>
+  </form>
+    <div class="modal-footer">
+          <div class="col-md-4">
+            <a href="/social" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
+          </div>
+          <div class="col-md-4">
+            <a href="/social" class="btn btn-default btn-lg"><i class="fa fa-google"></i> Google+</a>
+          </div>
+          <div class="col-md-4">
+            <a href="/social" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
+          </div>
+    </div>
+
+</div>
+
+</div>
+</div>
+</div>
+@endif
+
 @yield('content')
 </section>
 </section>

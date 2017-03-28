@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
+
+Route::get('/social', function () {
+    Auth::loginUsingId(1);
+    return redirect('/');
+});
+
 
 
 //Authenticate users has access
