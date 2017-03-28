@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="/css/wickedpicker.css">
+<script type="text/javascript" src="/js/wickedpicker.js"></script>
+
 <script>
 $( function() {
   $( "#datepicker" ).datepicker();
@@ -88,11 +92,20 @@ $( function() {
                             </div>
                         </div>
 
+
+
                         <div class="form-group{{ $errors->has('time') ? ' has-error' : '' }}">
                             <label for="time" class="col-md-4 control-label">Time</label>
 
                             <div class="col-md-6">
-                                <input id="time" type="text" class="form-control" name="time" value="" required>
+                                <!-- <input id="timepicker" type="text" class="timepicker form-control" name="time" value="" required> -->
+                                <input type="text" id="timepicker" name="timepicker" class="timepicker form-control" required>
+
+                                       <script type="text/javascript">
+                                           $('.timepicker').wickedpicker({ twentyFour: true, title:
+                                                   'Time'});
+                                       </script>
+
 
                                 @if ($errors->has('time'))
                                     <span class="help-block">
