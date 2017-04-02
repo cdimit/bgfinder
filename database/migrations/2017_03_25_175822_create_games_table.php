@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->string('category')->nullable();
+            $table->string('color')->default('grenn');
             $table->increments('id');
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Game;
+use App\User;
 use App\Table;
 
 class HomeController extends Controller
@@ -19,6 +20,7 @@ class HomeController extends Controller
     {
       $games = Game::all();
       $tables = Table::all();
-        return view('home')->withGames($games)->withTables($tables);
+      $users = User::all();
+        return view('home')->withGames($games)->withTables($tables)->withUsers($users);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Table;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -22,7 +23,10 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+      $games = Game::all()->sortBy('name');
+      $popular = $games->random(4);
+
+        return view('game.all')->withGames($games)->withPopular($popular);
     }
 
     /**
@@ -69,7 +73,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        return view('game.show')->withGame($game);
     }
 
     /**

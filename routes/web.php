@@ -40,5 +40,7 @@ Route::get('/game/create', 'GameController@create');
 Route::post('/game/create', 'GameController@store');
 Route::get('/game/{game}/edit', 'GameController@edit');
 Route::post('/game/{game}/edit', 'GameController@update');
+Route::get('game/all', 'GameController@index');
+Route::get('game/{game}', 'GameController@show');
 
 Route::get('profile/{profile}', 'ProfileController@show');

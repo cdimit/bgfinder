@@ -199,21 +199,18 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/{{Auth::user()->profile->picture}}" width="35px" height="35px">
+                                <img alt="" src="https://randomuser.me/api/portraits/men/{{Auth::user()->id}}.jpg" width="35px" height="35px">
                             </span>
-                            <span class="username">{{Auth::user()->username}}</span>
+                            <span class="username">{{Auth::user()->profile->name}}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a href="profile"><i class="icon_profile"></i> My Profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
+                                <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> Account Settings</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_chat_alt"></i> Chats</a>
@@ -231,15 +228,28 @@
 
                               </a>
                             </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
                 </ul>
                 <!-- notificatoin dropdown end-->
                 @endif
+            </div>
+
+            <div class="top-nav notification-row">
+            <a href="/table/create" class="btn main-bg btn-lg" href="">Create Table</a>
+            <div class="btn-group">
+  <a href="/game/all" class="btn main-bg btn-lg" href="">Games</a>
+  <a class="btn main-bg btn-lg dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+  <li><a href="/game/1" ><strong>Belote</strong></a></li>
+  <li><a href="/game/2" ><strong>Biriba</strong></a></li>
+  <li><a href="/game/3" ><strong>Backgammon</strong></a></li>
+  <li><a href="/game/4" ><strong>Chess</strong></a></li>
+  <li class="divider"></li>
+  <li><a href="/game/all"><strong>All Games</strong></a></li>
+</ul>
+</div>
             </div>
       </header>
       <!--header end-->

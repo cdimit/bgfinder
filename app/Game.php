@@ -13,15 +13,21 @@ class Game extends Model
    */
   protected $table = 'games';
 
+
+  public function getTableAttribute(): string
+  {
+    return $this->tables->count();
+  }
+
   /**
    * The attributes that are mass assignable.
    *
    * @var array
    */
-  protected $fillable = ['name', 'description', 'category'];
+  protected $fillable = ['name', 'description', 'category', 'color'];
 
 
-  public function myRefers()
+  public function tables()
   {
     return $this->hasMany('App\Table');
   }

@@ -16,7 +16,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
@@ -26,7 +25,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Profile::class, function ($faker) {
     return [
         'user_id' => function () {
-            return factory('App\User')->create(['role' => 'business'])->id;
+            return factory('App\User')->create()->id;
         },
         'name' => $faker->name,
         'gender'  => $faker->randomElement(['Male', 'Female']),
@@ -44,6 +43,7 @@ $factory->define(App\Game::class, function ($faker) {
         'name' => $faker->unique()->word,
         'description' => $faker->paragraph,
         'category'  => $faker->word,
+        'color' =>   $faker->randomElement(['green', 'white', 'brown', 'dark', 'blue', 'yellow', 'purple', 'orange', 'pink', 'magenta', 'lime', 'teal', 'facebook', 'twitter', 'linkedin']),
     ];
 });
 
@@ -60,7 +60,7 @@ $factory->define(App\Table::class, function ($faker) {
         'comment'  => $faker->paragraph,
         'place' => $faker->streetAddress,
         'private'  => $faker->boolean($chanceOfGettingTrue = 10),
-        'needed_players' => $faker->numberBetween(0,7),
-        'all_players' => $faker->numberBetween(2,8),
+        'needed_players' => $faker->numberBetween(1,7),
+        'status'  =>  $faker->randomElement(['open', 'close']),
     ];
 });

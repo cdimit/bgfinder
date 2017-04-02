@@ -4,82 +4,138 @@
 <div class="container">
     <div class="row">
       @if(Auth::guest())
-        <div class="col-md-8 col-md-offset-1">
+          <div class="col-lg-12">
       @else
-        <div class="col-md-8 col-md-offset-2">
+          <div class="col-lg-12 ">
       @endif
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <a href="/register">
+            <div class="info-box green-bg">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <div class="count">{{$users->count()}}</div>
+              <div class="title">Online Players</div>
+            </div><!--/.info-box-->
+          </a>
+          </div><!--/.col-->
 
-                <div class="panel-body">
-                    <a href="/game/create" class="btn btn-primary">Create Game (Admin)</a>
-                    <a href="/table/create" class="btn btn-primary">Create Table</a>
-                </div>
-            </div>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box brown-bg">
+              <i class="fa fa-globe" aria-hidden="true"></i>
+              <div class="count">{{$tables->where('status', 'open')->count()}}</div>
+              <div class="title">Active Tables</div>
+            </div><!--/.info-box-->
+          </div><!--/.col-->
 
-            <div class="panel panel-default">
-              <!-- Default panel contents -->
-              <div class="panel-heading">Games</div>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <a href="/game/all">
+            <div class="info-box dark-bg">
+              <i class="fa fa-trophy" aria-hidden="true"></i>
+              <div class="count">{{$games->count()}}</div>
+              <div class="title">Games</div>
+            </div><!--/.info-box-->
+          </a>
+          </div><!--/.col-->
 
-              <!-- Table -->
-              <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Category (ex: Cards)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($games as $game)
-                    <tr>
-                      <td>{{$game->name}}</td>
-                      <td>{{$game->description}}</td>
-                      <td>{{$game->category}}</td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-            </div>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box blue-bg">
+              <i class="fa fa-cubes"></i>
+              <div class="count">{{$tables->where('status', 'close')->count()}}</div>
+              <div class="title">Completed Tables</div>
+            </div><!--/.info-box-->
+          </div><!--/.col-->
 
-            <div class="panel panel-default">
-              <!-- Default panel contents -->
-              <div class="panel-heading">Tables</div>
+        </div><!--/.row-->
+          </div>
 
-              <!-- Table -->
-              <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Game</th>
-                      <th>User</th>
-                      <th>Place</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th>Players</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($tables as $table)
-                    <tr>
-                      <td>{{$table->game->name}}</td>
-                      <td>{{$table->user->username}}</td>
-                      <td>{{$table->place}}</td>
-                      <td>{{$table->date}}</td>
-                      <td>{{$table->time}}</td>
-                      <td>{{$table->current_players}}/{{$table->all_players}}</td>
-                      <td><a href="#" class="btn btn-success">Join</a></td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-            </div>
+        <div class="row">
+                 <div class="col-lg-12">
+                     <section class="panel">
+                         <header class="panel-heading">
+                             Tables
+                         </header>
 
+                         <table class="table table-striped table-advance table-hover">
+                          <tbody>
+                             <tr>
+                               <th><i class="icon_profile"></i> Game</th>
+                                <th><i class="icon_profile"></i> Name</th>
+                                <th><i class="icon_calendar"></i> Date and Time to Play</th>
+                                <th><i class="icon_pin_alt"></i> Location</th>
+                                <th><i class="fa fa-users" aria-hidden="true"></i> Players Needed</th>
+                                <th><i class="fa fa-comments-o" aria-hidden="true"></i></i> Chat</th>
+                                <th><i class="icon_cogs"></i> Action</th>
+                             </tr>
+                             <tr>
+                               <td>Biriba</td>
+                                <td>Angeline Mcclain</td>
+                                <td>2004-07-06 15:25</td>
+                                <td>Cyprus, Nicosia, Panepistimiou 1</td>
+                                <td>1</td>
+                                <td><a class="btn btn-default" href="" title="Bootstrap 3 themes generator">
+                                          <span<i class="fa fa-comments-o" aria-hidden="true"></i></span></a> </td>
+                                <td>
+                                 <div class="btn-group">
+                                     <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                     <a class="btn btn-success" href="#"> More</a>
+                                 </div>
+                                 </td>
+                             </tr>
+                             <tr>
+                               <td>Belote</td>
+                                <td>Angeline Mcclain</td>
+                                <td>2004-07-06 15:25</td>
+                                <td>Cyprus, Nicosia, Panepistimiou 1</td>
+                                <td>1</td>
+                                <td><a class="btn btn-default" href="" title="Bootstrap 3 themes generator">
+                                          <span<i class="fa fa-comments-o" aria-hidden="true"></i></span></a> </td>
+                                <td>
+                                 <div class="btn-group">
+                                     <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                     <a class="btn btn-success" href="#"> More</a>
+                                 </div>
+                                 </td>
+                             </tr>
+
+                             <tr>
+                               <td>Backgammon</td>
+                                <td>Angeline Mcclain</td>
+                                <td>2004-07-06 15:25</td>
+                                <td>Cyprus, Nicosia, Panepistimiou 1</td>
+                                <td>1</td>
+                                <td><a class="btn btn-default" href="" title="Bootstrap 3 themes generator">
+                                          <span<i class="fa fa-comments-o" aria-hidden="true"></i></span></a> </td>
+                                <td>
+                                 <div class="btn-group">
+                                     <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                     <a class="btn btn-success" href="#"> More</a>
+                                 </div>
+                                 </td>
+                             </tr>
+
+                             <tr>
+                               <td>Biriba</td>
+                                <td>Angeline Mcclain</td>
+                                <td>2004-07-06 15:25</td>
+                                <td>Cyprus, Nicosia, Panepistimiou 1</td>
+                                <td>1</td>
+                                <td><a class="btn btn-default" href="" title="Bootstrap 3 themes generator">
+                                          <span<i class="fa fa-comments-o" aria-hidden="true"></i></span></a> </td>
+                                <td>
+                                 <div class="btn-group">
+                                     <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                     <a class="btn btn-success" href="#"> More</a>
+                                 </div>
+                                 </td>
+                             </tr>
+
+                          </tbody>
+                       </table>
+                     </section>
+                 </div>
 
 
         </div>
     </div>
 </div>
-
 
 @endsection

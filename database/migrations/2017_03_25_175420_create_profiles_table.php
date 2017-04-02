@@ -14,7 +14,7 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('picture')->default('/profiles/profile.jpg');
             $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
