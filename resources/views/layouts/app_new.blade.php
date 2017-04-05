@@ -207,7 +207,7 @@
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="profile"><i class="icon_profile"></i> My Profile</a>
+                                <a href="/profile"><i class="icon_profile"></i> My Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> Account Settings</a>

@@ -27,7 +27,7 @@ Route::get('/social', function () {
 //Authenticate users has access
 Route::group(['middleware' => 'auth'], function(){
 
-  Route::get('/profile', 'ProfileController@index');
+  Route::get('/profile', 'ProfileController@show');
   Route::get('/profile/edit', 'ProfileController@edit');
   Route::post('/profile/edit', 'ProfileController@update');
 
