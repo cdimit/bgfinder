@@ -75,11 +75,26 @@
                 </ul>
                 <!--  search form end -->
             </div>
+            <div class="nav search-row ">
+                      <a href="/table/create" class="btn btn-default" href="">Create Table</a>
+                      <div class="btn-group">
+                    <a href="/game/all" class="btn btn-default " href="">Games</a>
+                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="/game/1" ><strong>Belote</strong></a></li>
+                    <li><a href="/game/2" ><strong>Biriba</strong></a></li>
+                    <li><a href="/game/3" ><strong>Backgammon</strong></a></li>
+                    <li><a href="/game/4" ><strong>Chess</strong></a></li>
+                    <li class="divider"></li>
+                    <li><a href="/game/all"><strong>All Games</strong></a></li>
+                  </ul>
+                  </div>
+            </div>
 
-            <div class="top-nav notification-row">
+            <div class="nav notification-row">
               @if (Auth::guest())
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal-register"><i class="icon_key_alt"></i> Register</button>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal-login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+              <button type="button" class="btn brown-bg " data-toggle="modal" data-target="#myModal-register"><i class="icon_key_alt"></i> Register</button>
               @else
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
@@ -88,12 +103,12 @@
                     <li id="mail_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope-l"></i>
-                            <span class="badge bg-important">5</span>
+                            <span class="badge bg-important">3</span>
                         </a>
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">You have 5 new messages</p>
+                                <p class="blue">You have 3 new messages</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -104,18 +119,6 @@
                                     </span>
                                     <span class="message">
                                         I really like this admin panel.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Bob   Mckenzie</span>
-                                    <span class="time">5 mins</span>
-                                    </span>
-                                    <span class="message">
-                                     Hi, What is next project plan?
                                     </span>
                                 </a>
                             </li>
@@ -154,7 +157,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                             <i class="icon-bell-l"></i>
-                            <span class="badge bg-important">7</span>
+                            <span class="badge bg-important">4</span>
                         </a>
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
@@ -171,7 +174,7 @@
                             <li>
                                 <a href="#">
                                     <span class="label label-warning"><i class="icon_pin"></i></span>
-                                    John location.
+                                    Giorgos Join in Table.
                                     <span class="small italic pull-right">50 mins</span>
                                 </a>
                             </li>
@@ -236,21 +239,7 @@
                 @endif
             </div>
 
-            <div class="top-nav notification-row">
-            <a href="/table/create" class="btn main-bg btn-lg" href="">Create Table</a>
-            <div class="btn-group">
-  <a href="/game/all" class="btn main-bg btn-lg" href="">Games</a>
-  <a class="btn main-bg btn-lg dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-  <ul class="dropdown-menu">
-  <li><a href="/game/1" ><strong>Belote</strong></a></li>
-  <li><a href="/game/2" ><strong>Biriba</strong></a></li>
-  <li><a href="/game/3" ><strong>Backgammon</strong></a></li>
-  <li><a href="/game/4" ><strong>Chess</strong></a></li>
-  <li class="divider"></li>
-  <li><a href="/game/all"><strong>All Games</strong></a></li>
-</ul>
-</div>
-            </div>
+
       </header>
       <!--header end-->
 
@@ -280,9 +269,9 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                        <li><a class="" href="general.html"><i class="fa fa-user"></i> Christos</a></li>
-                        <li><a class="" href="buttons.html"><i class="fa fa-user"></i> Giorgos </a></li>
-                        <li><a class="" href="grids.html"><i class="fa fa-user"></i> Constantinos </a></li>
+                        <li><a data-toggle="modal" data-target="#myModalChat"><i class="fa fa-user"></i> Christos</a></li>
+                        <li><a data-toggle="modal" data-target="#myModalChat"><i class="fa fa-user"></i> Giorgos</a></li>
+                        <li><a data-toggle="modal" data-target="#myModalChat"><i class="fa fa-user"></i> Antreas</a></li>
                       </ul>
                   </li>
 
@@ -295,6 +284,9 @@
       @endif
       <section id="main-content">
           <section class="wrapper">
+
+
+
 
 @if(Auth::guest())
             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal-login" class="modal fade">
@@ -383,7 +375,7 @@
 <div class="modal-content">
 <div class="modal-header">
     <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-    <h4 class="modal-title">Login</h4>
+    <h4 class="modal-title">Register</h4>
 </div>
 <div class="modal-body">
 
@@ -466,6 +458,110 @@
 </div>
 </div>
 @endif
+
+<div id="myModalChat" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="row">
+                <div class="col-md-12 portlets">
+                  <!-- Widget -->
+                  <div class="panel panel-default">
+    				<div class="panel-heading">
+                      <div class="pull-left">Message</div>
+                      <div class="widget-icons pull-right">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-body">
+                      <!-- Widget content -->
+                      <div class="padd sscroll">
+
+                        <ul class="chats">
+
+                          <!-- Chat by us. Use the class "by-me". -->
+                          <li class="by-me">
+                            <!-- Use the class "pull-left" in avatar -->
+                            <div class="avatar pull-left">
+                              <img src="img/user.jpg" alt=""/>
+                            </div>
+
+                            <div class="chat-content">
+                              <!-- In meta area, first include "name" and then "time" -->
+                              <div class="chat-meta">John Smith <span class="pull-right">3 hours ago</span></div>
+                              Vivamus diam elit diam, consectetur dapibus adipiscing elit.
+                              <div class="clearfix"></div>
+                            </div>
+                          </li>
+
+                          <!-- Chat by other. Use the class "by-other". -->
+                          <li class="by-other">
+                            <!-- Use the class "pull-right" in avatar -->
+                            <div class="avatar pull-right">
+                              <img src="img/user22.png" alt=""/>
+                            </div>
+
+                            <div class="chat-content">
+                              <!-- In the chat meta, first include "time" then "name" -->
+                              <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
+                              Vivamus diam elit diam, consectetur fconsectetur dapibus adipiscing elit.
+                              <div class="clearfix"></div>
+                            </div>
+                          </li>
+
+                          <li class="by-me">
+                            <div class="avatar pull-left">
+                              <img src="img/user.jpg" alt=""/>
+                            </div>
+
+                            <div class="chat-content">
+                              <div class="chat-meta">John Smith <span class="pull-right">4 hours ago</span></div>
+                              Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
+                              <div class="clearfix"></div>
+                            </div>
+                          </li>
+
+                          <li class="by-other">
+                            <!-- Use the class "pull-right" in avatar -->
+                            <div class="avatar pull-right">
+                              <img src="img/user22.png" alt=""/>
+                            </div>
+
+                            <div class="chat-content">
+                              <!-- In the chat meta, first include "time" then "name" -->
+                              <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
+                              Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
+                              <div class="clearfix"></div>
+                            </div>
+                          </li>
+
+                        </ul>
+
+                      </div>
+                      <!-- Widget footer -->
+                      <div class="widget-foot">
+
+                          <form class="col-md-10">
+    						<div class="form-group">
+    							<input type="text" class="form-control" placeholder="Type your message here...">
+    						</div>
+              </form>
+              <form class="col-md-2">
+                    <button type="submit" class="btn btn-info">Send</button>
+                  </form>
+
+
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+  </div>
+</div>
+</div>
 
 @yield('content')
 </section>

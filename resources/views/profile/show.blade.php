@@ -11,10 +11,6 @@
 <div class="row">
   <div class="col-lg-12">
     <h3 class="page-header"><i class="fa fa-user-md"></i> Profile</h3>
-    <ol class="breadcrumb">
-      <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-      <li><i class="fa fa-user-md"></i>Profile</li>
-    </ol>
   </div>
 </div>
         <div class="row">
@@ -25,20 +21,24 @@
                       <div class="col-lg-2 col-sm-2">
                         <h4>{{ $profile->name }}</h4>
                         <div class="follow-ava">
-                            <img src="img/profile-widget-avatar.jpg" alt="">
+                            <img alt="avatar" src="https://randomuser.me/api/portraits/men/{{Auth::user()->id}}.jpg">
                         </div>
                       </div>
                       <div class="col-lg-4 col-sm-4 follow-info">
-                          <p>5/10</p>
-          <p><i class="fa fa-twitter">acctweet</i></p>
-                          <h6>
-
-                              <span><i class="icon_pin_alt"></i>{{ $profile->country }}</span>
-                          </h6>
+                          <p><strong>Rank Points:</strong> {{$profile->rank}}</p>
+                          <p><strong>Review:</strong> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i></p>
+                          <p><strong><i class="icon_pin_alt"></i></strong>{{ $profile->country }}</p>
                       </div>
-
-
-
+                      <div class="col-lg-4 col-sm-4 follow-info">
+                          <p><strong>Friends:</strong> 14</p>
+                          <p><strong>Tables:</strong> 42</p>
+                          <p><strong>Favorite Game:</strong> Belote</p>
+                      </div>
+                      @if(Auth::user()->id!=$profile->user->id)
+                      <div class="col-lg-4 col-sm-4 follow-info">
+                          <a href="" class="btn main-bg">Send Friend Request</a>
+                      </div>
+                      @endif
                     </div>
               </div>
           </div>
@@ -49,16 +49,23 @@
               <section class="panel">
                     <header class="panel-heading tab-bg-info">
                         <ul class="nav nav-tabs">
+
                             <li class="active">
+                                <a data-toggle="tab" href="#profile">
+                                    <i class="icon-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
                                 <a data-toggle="tab" href="#recent-activity">
                                     <i class="icon-home"></i>
                                     Review
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" href="#profile">
-                                    <i class="icon-user"></i>
-                                    Profile
+                                <a data-toggle="tab" href="#friends">
+                                    <i class="icon-home"></i>
+                                    Friends
                                 </a>
                             </li>
                             <li class="">
@@ -71,7 +78,7 @@
                     </header>
                     <div class="panel-body">
                         <div class="tab-content">
-                            <div id="recent-activity" class="tab-pane active">
+                            <div id="recent-activity" class="tab-pane">
                                 <div class="profile-activity">
 
                                     <div class="act-time">
@@ -79,7 +86,7 @@
                                             <span class="arrow"></span>
                                             <div class="text">
                                                 <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                                                <p class="attribution"><a href="#">Jimy Smith</a> at 5:25am, 30th Octmber 2014</p>
+                                                <p class="attribution"><a href="#">Jimy Smith</a><strong>Rate:</strong> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
                                                 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
                                             </div>
                                         </div>
@@ -88,8 +95,8 @@
                                         <div class="activity-body act-in">
                                             <span class="arrow"></span>
                                             <div class="text">
-                                                <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                                                <p class="attribution"><a href="#">Maria Willyam</a> at 5:25am, 30th Octmber 2014</p>
+                                                <a href="#" class="activity-img"><img class="avatar" src="https://randomuser.me/api/portraits/women/64.jpg" alt=""></a>
+                                                <p class="attribution"><a href="#">Maria Willyam</a><strong>Rate:</strong> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i></p>
                                                 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
                                             </div>
                                         </div>
@@ -98,8 +105,8 @@
                                         <div class="activity-body act-in">
                                             <span class="arrow"></span>
                                             <div class="text">
-                                                <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                                                <p class="attribution"><a href="#">Sarah saw</a> at 5:25am, 30th Octmber 2014</p>
+                                                <a href="#" class="activity-img"><img class="avatar" src="https://randomuser.me/api/portraits/women/23.jpg" alt=""></a>
+                                                <p class="attribution"><a href="#">Sarah saw</a> <strong>Rate:</strong> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i></p>
                                                 <p>Knowledge speaks, but wisdom listens.</p>
                                             </div>
                                         </div>
@@ -108,8 +115,8 @@
                                         <div class="activity-body act-in">
                                             <span class="arrow"></span>
                                             <div class="text">
-                                                <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                                                <p class="attribution"><a href="#">Layla night</a> at 5:25am, 30th Octmber 2014</p>
+                                                <a href="#" class="activity-img"><img class="avatar" src="https://randomuser.me/api/portraits/women/34.jpg" alt=""></a>
+                                                <p class="attribution"><a href="#">Layla night</a> <strong>Rate:</strong> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i></p>
                                                 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                                             </div>
                                         </div>
@@ -119,7 +126,7 @@
                                 </div>
                             </div>
                             <!-- profile -->
-                            <div id="profile" class="tab-pane">
+                            <div id="profile" class="tab-pane active">
                               <section class="panel">
                                 <div class="bio-graph-heading">
                                   {{$profile->about}}
@@ -142,10 +149,10 @@
                                         </div>
 
                                         <div class="bio-row">
-                                            <p><span>Email </span>: asd@ads.co <i class="fa fa-lock"></i></p>
+                                            <p><span>Email </span>: *****@**mail.com <i class="fa fa-lock"></i></p>
                                         </div>
                                         <div class="bio-row">
-                                            <p><span>Phone </span>: {{$profile->phone}} <i class="fa fa-lock"></i></p>
+                                            <p><span>Phone </span>: *********386 <i class="fa fa-lock"></i></p>
                                         </div>
 
                                     </div>
@@ -155,6 +162,69 @@
                                     <div class="row">
                                     </div>
                                 </section>
+                            </div>
+                            @if(Auth::user()->id==$profile->user->id)
+                            <div id="friends" class="tab-pane">
+                              <section class="panel">
+                                <h3>Friend Requests</h3>
+                                <div class="act-time">
+                                    <div class="activity-body">
+                                        <span class="arrow"></span>
+                                        <div class="text">
+                                            <a href="#" class="activity-img"><img alt="avatar" src="https://randomuser.me/api/portraits/women/34.jpg"></a>
+                                            <p class="attribution"><a href="#"><h4>Jimy Smith</h4></a></p>
+                                             <a href="#" class="green-bg btn">Accept</a>  <a href="#" class="main-bg btn">Decline</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="act-time">
+                                    <div class="activity-body">
+                                        <span class="arrow"></span>
+                                        <div class="text">
+                                            <a href="#" class="activity-img"><img alt="avatar" src="https://randomuser.me/api/portraits/men/34.jpg"></a>
+                                            <p class="attribution"><a href="#"><h4>Jimy Smith</h4></a></p>
+                                             <a href="#" class="green-bg btn">Accept</a>  <a href="#" class="main-bg btn">Decline</a>
+                                        </div>
+                                    </div>
+                                </div>
+                              </section>
+                              <hr>
+                              <section class="panel">
+                                <h3>My Friends</h3>
+                                <div class="act-time">
+                                    <div class="activity-body">
+                                        <span class="arrow"></span>
+                                        <div class="text">
+                                            <a href="#" class="activity-img"><img alt="avatar" src="https://randomuser.me/api/portraits/men/24.jpg"></a>
+                                            <p class="attribution"><a href="#"><h4>Christos Doe</h4></a></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="act-time">
+                                    <div class="activity-body">
+                                        <span class="arrow"></span>
+                                        <div class="text">
+                                            <a href="#" class="activity-img"><img alt="avatar" src="https://randomuser.me/api/portraits/men/4.jpg"></a>
+                                            <p class="attribution"><a href="#"><h4>George Bush</h4></a></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="act-time">
+                                    <div class="activity-body">
+                                        <span class="arrow"></span>
+                                        <div class="text">
+                                            <a href="#" class="activity-img"><img alt="avatar" src="https://randomuser.me/api/portraits/women/7.jpg"></a>
+                                            <p class="attribution"><a href="#"><h4>Donald Trump</h4></a></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                              </section>
                             </div>
                             <!-- edit-profile -->
                             <div id="edit-profile" class="tab-pane">
@@ -204,7 +274,7 @@
 
                                                             <div class="col-md-6">
                                                                 <input id="picture" type="file" name="picture">
-                                                                <img src="/img/{{$profile->picture}}">
+                                                                <img alt="avatar" src="https://randomuser.me/api/portraits/men/{{Auth::user()->id}}.jpg">
 
                                                                 @if ($errors->has('picture'))
                                                                     <span class="help-block">
@@ -325,6 +395,7 @@
                                     </div>
                                 </section>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </section>
